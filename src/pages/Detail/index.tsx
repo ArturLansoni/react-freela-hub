@@ -6,6 +6,7 @@ import { useFreelancers } from "../../hooks/useFreelancers";
 import { Flag } from "../../components/flag";
 import { RatingIcon } from "../../components/icons";
 import { Loader } from "../../components/loader";
+import { toast } from "react-toastify";
 
 function Detail() {
     let { id } = useParams();
@@ -13,6 +14,13 @@ function Detail() {
     useEffect(() => {
         getFreelancerById(id ?? '');
     }, []);
+
+    function presentToast() {
+        toast(
+            "Você acaba de contratar um freela!",
+            { position: "top-right" }
+        );
+    }
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -64,7 +72,7 @@ function Detail() {
                 </ReviewList>
 
 
-                <button>Contratar</button>
+                <button onClick={presentToast}>Contratar</button>
 
                 <Link to='/'>Voltar</Link>
             </FreelancerDetail>}
