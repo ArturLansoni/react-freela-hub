@@ -1,22 +1,6 @@
 import styled from "styled-components";
 
-const Title = styled.h1`
-  font-family: "Danfo", serif;
-  text-align: center;
-  font-weight: bold;
-  font-size: 52px;
-  background-image: linear-gradient(
-    90deg,
-    var(--primary) 0%,
-    var(--secondary) 100%
-  );
-  color: transparent;
-  background-clip: text;
-  margin-top: 2rem;
-`;
-
 const FreelancerList = styled.ul`
-  padding-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +24,9 @@ const FreelancerList = styled.ul`
     h2 {
       font-size: 24px;
       font-weight: bold;
+      white-space: nowrap;
     }
+
     button {
       color: var(--background);
       font-weight: bold;
@@ -53,95 +39,39 @@ const FreelancerList = styled.ul`
         var(--secondary) 100%
       );
     }
+
+    img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 100%;
+    }
   }
 `;
-const Spacer = styled.div`
-  width: 100%;
-`;
 
-const Row = styled.div`
+const SearchArea = styled.div<{ hideButton: boolean }>`
   display: flex;
   flex-direction: row;
-  align-items: center;
-`;
-
-const ProfileContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 2rem;
-  max-width: 1280px;
-  margin: 0 auto;
-
-  h1 {
-    margin-top: 64px;
-  }
-
-  p {
-    margin: 24px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-  }
-  > img {
-    border-radius: 100%;
-    height: 200px;
-    width: 200px;
-    margin: 0 auto;
-  }
-
-  button {
-    margin-left: auto;
-    background-color: var(--background);
-    border: 0;
-  }
-  .center {
-    text-align: center;
-  }
-`;
-
-const RepoList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const Repo = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #30363d;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
-  padding: 1rem;
-  gap: 1rem;
+  border: 1px solid var(--surface);
+  margin: 4rem 0 2rem 0;
+  max-width: 720px;
+  width: 100%;
+  background-color: var(--surface);
 
-  a {
-    color: #2f81f7;
+  input {
+    border: 0;
+    background: none;
+    width: 100%;
+    color: var(--text);
   }
-
-  p {
-    margin: 0;
-    color: #7d8590;
-  }
-`;
-
-const Topics = styled.div`
-  display: flex;
-  flex-direction: row;
-  p {
-    font-size: 14px;
+  button {
+    display: ${(props) => (props.hideButton ? "none" : "block")};
+    border: 0;
+    background: none;
+    color: var(--text);
     font-weight: bold;
-    margin: 0 0.125em 0.333em 0;
-    padding: 0 7px;
-    color: #2f81f7;
-    background: #388bfd1a;
-    border-radius: 2em;
-    padding: 0 10px;
-    white-space: nowrap;
   }
 `;
 
-const Language = styled.p`
-  margin-right: 2rem;
-`;
-
-export { Title, Row, FreelancerList, Spacer };
+export { FreelancerList, SearchArea };

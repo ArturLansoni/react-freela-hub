@@ -1,25 +1,23 @@
 import { RatingIcon } from "../../../components/icons";
 import { Flag } from "../../../components/flag";
-import { Row, Spacer } from "../styles";
+import { Link } from "react-router-dom";
+import { Row, Spacer } from "../../../styles";
 
 function FreelancerItem({
+    id,
     name,
     country,
     rating,
     description,
     skills,
-    onClick,
-}: {
-    name: string;
-    country: string;
-    rating: number;
-    description: string;
-    skills: string[];
-    onClick: () => void;
-}) {
+    imageURL,
+}: Freelancer) {
     return (<li>
         <Row>
+            <img src={imageURL} alt="" />
+            <Spacer />
             <h2>{name}</h2>
+            <Spacer />
             <Flag country={country} />
 
             <Row>
@@ -32,7 +30,10 @@ function FreelancerItem({
         <Row>
             {skills.map(skill => <p>#{skill}</p>)}
             <Spacer />
-            <button onClick={onClick}>Contratar</button>
+
+            <Link to={`/detail/${id}`}>
+                <button>Contratar</button>
+            </Link>
         </Row>
     </li>)
 }

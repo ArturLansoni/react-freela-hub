@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -23,6 +23,10 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   :root {
     --text: #FFFBFE;
     --background: #1C1B1F;
@@ -33,4 +37,29 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export { GlobalStyles };
+const Title = styled.h1`
+  font-family: "Danfo", serif;
+  text-align: center;
+  font-weight: bold;
+  font-size: 52px;
+  background-image: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    var(--secondary) 100%
+  );
+  color: transparent;
+  background-clip: text;
+  margin-top: 2rem;
+`;
+
+const Spacer = styled.div`
+  width: 100%;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export { GlobalStyles, Title, Spacer, Row };
