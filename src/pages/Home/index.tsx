@@ -29,7 +29,7 @@ function Home() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Title>Freela HUB</Title>
+            <Title>💼 Freela HUB</Title>
 
             <SearchArea hideButton={searchTerm.length == 0} >
                 <input type="text"
