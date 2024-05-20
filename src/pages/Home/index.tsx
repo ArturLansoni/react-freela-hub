@@ -3,11 +3,13 @@ import { FreelancerItem } from "./components/freelancerItem";
 import { useFreelancers } from "../../hooks/useFreelancers";
 import { useEffect, useState } from "react";
 import { Title } from "../../styles";
+import { Loader } from "../../components/loader";
 
 function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     const {
         freelancers,
+        isLoading,
         loadFreelancers,
         search,
     } = useFreelancers();
@@ -37,7 +39,7 @@ function Home() {
                 />
                 <button onClick={clear}>X</button>
             </SearchArea>
-
+            {isLoading && <Loader />}
             <FreelancerList>
                 {freelancers.map(freelancer => <FreelancerItem
                     {...freelancer}

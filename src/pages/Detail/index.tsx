@@ -5,10 +5,11 @@ import { useEffect } from "react";
 import { useFreelancers } from "../../hooks/useFreelancers";
 import { Flag } from "../../components/flag";
 import { RatingIcon } from "../../components/icons";
+import { Loader } from "../../components/loader";
 
 function Detail() {
     let { id } = useParams();
-    const { getFreelancerById, freelancer } = useFreelancers();
+    const { getFreelancerById, freelancer, isLoading } = useFreelancers();
     useEffect(() => {
         getFreelancerById(id ?? '');
     }, []);
@@ -18,7 +19,8 @@ function Detail() {
             <Link to='/'>
                 <Title>Freela HUB</Title>
             </Link>
-            <FreelancerDetail>
+            {isLoading && <Loader />}
+            {!isLoading && freelancer != null && <FreelancerDetail>
                 <Row>
                     <img src={freelancer?.imageURL} alt="" />
                     <h2>{freelancer?.name}</h2>
@@ -65,7 +67,7 @@ function Detail() {
                 <button>Contratar</button>
 
                 <Link to='/'>Voltar</Link>
-            </FreelancerDetail>
+            </FreelancerDetail>}
             <div style={{ height: '4rem' }} />
         </div>
     );
